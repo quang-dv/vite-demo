@@ -25,8 +25,8 @@ jobs:
 
       - name: Commit and push images
         run: |
-          if ls src/doc/image/*.png 1> /dev/null 2>&1; then
-            git add src/doc/image/*.png
+          if ls src/doc/image/ 1> /dev/null 2>&1; then
+            git add src/doc/image/
             git commit -m "Add converted PlantUML images"
             git push origin HEAD:doc  # Đẩy vào nhánh doc
           else
