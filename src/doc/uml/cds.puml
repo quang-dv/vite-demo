@@ -1,0 +1,10 @@
+@startuml
+start
+if (Condition?) then (yes)
+:Perform Task A;
+else (no)
+:Perform Task B;
+endif
+stop
+@enduml
+

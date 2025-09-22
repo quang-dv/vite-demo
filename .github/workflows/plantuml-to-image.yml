@@ -23,6 +23,11 @@ jobs:
           mkdir -p src/doc/image  # Tạo thư mục image nếu chưa có
           find src/doc/uml -name '*.puml' -exec plantuml -o src/doc/image/ {} \;
 
+      - name: Configure Git
+        run: |
+          git config --global user.email "quangdv.dev@gmail.com"
+          git config --global user.name "quang-dv"
+
       - name: Commit and push images
         run: |
           if ls src/doc/image/ 1> /dev/null 2>&1; then
