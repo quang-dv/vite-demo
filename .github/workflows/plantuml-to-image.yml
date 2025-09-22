@@ -3,39 +3,19 @@ name: Convert PlantUML to Image
 on:
   push:
     paths:
-      - "src/doc/uml/**" # Kích hoạt khi có thay đổi trong thư mục uml
+      - "src/docs/uml/**" # Kích hoạt khi có thay đổi trong thư mục uml
 
 jobs:
-  convert:
+  generate_plantuml:
     runs-on: ubuntu-latest
-
+    name: plantuml
     steps:
-      - name: Checkout repository
+      - name: checkout
         uses: actions/checkout@v2
-
-      - name: Install PlantUML
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y plantuml
-
-      - name: Convert PlantUML files to images
-        run: |
-          mkdir -p src/doc/image  # Tạo thư mục image nếu chưa có
-          find src/doc/uml -name '*.puml' -exec plantuml -o src/doc/image/ {} \;
-
-      - name: Configure Git
-        run: |
-          git config --global user.email "quangdv.dev@gmail.com"
-          git config --global user.name "quang-dv"
-
-      - name: Commit and push images
-        run: |
-          if ls src/doc/image/ 1> /dev/null 2>&1; then
-            git add src/doc/image/
-            git commit -m "Add converted PlantUML images"
-            git push origin HEAD:doc  # Đẩy vào nhánh doc
-          else
-            echo "No images to commit."
-          fi
+      - name: plantuml
+        id: plantuml
+        uses: grassedge/generate-plantuml-action@master
+        with:
+          path: example
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
