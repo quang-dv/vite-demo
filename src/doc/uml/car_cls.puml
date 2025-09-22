@@ -1,0 +1,15 @@
+@startuml
+class Car {
++ brand: String
++ model: String
++ startEngine()
++ stopEngine()
+}
+
+class Driver {
++ name: String
++ drive(car: Car)
+}
+
+Car "1" --> "1..*" Driver
+@enduml
