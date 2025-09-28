@@ -3,7 +3,7 @@ name: Convert PlantUML to Image
 on:
   push:
     paths:
-      - "src/docs/uml/**" # Kích hoạt khi có thay đổi trong thư mục uml
+      - "src/docs/plantuml/**" # Kích hoạt khi có thay đổi trong thư mục uml
 
 jobs:
   generate_plantuml:
