@@ -3,7 +3,12 @@ name: Convert PlantUML to Image
 on:
   push:
     paths:
-      - "src/docs/uml/**" # Kích hoạt khi có thay đổi trong thư mục uml
+      - "src/docs/plantuml/**" # Kích hoạt khi có thay đổi trong thư mục uml
+
+permissions:
+  contents: read  # Quyền đọc nội dung
+  actions: write   # Quyền ghi cho actions
+  pull-requests: write
 
 jobs:
   generate_plantuml:
@@ -15,7 +20,5 @@ jobs:
       - name: plantuml
         id: plantuml
         uses: grassedge/generate-plantuml-action@master
-        with:
-          path: example
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
