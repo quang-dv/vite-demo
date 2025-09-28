@@ -1,0 +1,32 @@
+@startuml
+skinparam actorStyle awesome
+skinparam defaultTextAlignment center
+skinparam maxMessageSize 150
+
+node "Victor's Home\nRaspberry Pi" {
+  component "PlantUML Online\nWeb Frontend" as Web
+  component "PlantUML Engine\nContainerized" as Engine
+}
+
+actor "Victor\n(Your Friendly\nPlantUML Host)" as Victor #lightgreen
+actor "User\n(You!)" as User #salmon
+
+Victor --> Web : Publishes updates
+User --> Web : Creates diagrams
+Web --> Engine : Parses & renders
+
+User --> Victor : Buys me a coffee
+
+note left of Victor
+I'm a solutions architect.  
+I forked and hosted this site  
+for my own use — and now
+I share it with you!
+end note
+
+note right of User
+If this site is helpful to you,  
+how about buying me a coffee?
+(link on the top of page)
+end note
+@enduml
