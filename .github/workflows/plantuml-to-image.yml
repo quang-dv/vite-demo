@@ -2,10 +2,8 @@ name: Convert PlantUML to Image
 
 on:
   push:
-    branch:
-      - main
     paths:
-      - "src/docs/plantuml/**" # Kích hoạt khi có thay đổi trong thư mục uml
+      - "docs/plantuml/**" # Kích hoạt khi có thay đổi trong thư mục uml
 
 permissions:
   contents: read  # Quyền đọc nội dung

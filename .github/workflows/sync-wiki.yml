@@ -3,8 +3,6 @@ name: Sync Wiki
 on:
   gollum:
   push:
-    branches:
-      - main
     paths:
       - 'docs/**'
 
@@ -21,4 +19,4 @@ jobs:
       - name: Sync to Wiki
         uses: kawamataryo/github-wiki-sync-actions@v0.0.3
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.MY_TOKEN }}
